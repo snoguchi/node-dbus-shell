@@ -1,0 +1,16 @@
+{
+  "name": "dbus-shell",
+  "version": "0.1.0",
+  "description": "D-bus shell",
+  "main": "shell.js",
+  "dependencies": {
+    "dbus-native": "^0.2.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "snoguchi",
+  "license": "ISC"
+}
