@@ -1,14 +1,23 @@
-var shell = require('./shell.js');
+const DbusShell = require('./shell.js');
 
-shell()
-  .systemBus()
-  .then(function(bus) { console.log(bus); })
-  .getService('org.freedesktop.DBus')
-  .then(function(service) { console.log(service); })
-  .getObject('/org/freedesktop/DBus')
-  .then(function(obj) { console.log(obj); })
-  .getInterface('org.freedesktop.DBus.Introspectable')
-  .then(function(iface) { console.log(iface); })
-  .invoke('Introspect')
-  .then(function(result) { console.log(result); })
-  .releaseBus();
+(async function() {
+  const shell = new DbusShell();
+
+  const bus = await shell.systemBus();
+  console.log(bus);
+
+  const service = await shell.getService('org.freedesktop.DBus');
+  console.log(service);
+
+  const obj = await shell.getObject('/org/freedesktop/DBus');
+  console.log(obj);
+
+  const iface = await shell.getInterface('org.freedesktop.DBus.Introspectable');
+  console.log(iface);
+
+  const result = await shell.invoke('Introspect');
+  console.log(result);
+
+  shell.releaseBus();
+})();
+
